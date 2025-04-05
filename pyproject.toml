@@ -1,0 +1,14 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "drone-utils"
+version = "0.1.0"
+description = "Drone control utilities for Gazebo simulation and mock environments."
+authors = [{ name = "ITU Cezeri Team", email = "itu.cezeri@gmail.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[tool.hatch.build]
+packages = ["gz_ctl", "mock_sim"]
