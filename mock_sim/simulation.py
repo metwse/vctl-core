@@ -3,13 +3,13 @@ class Drone:
         self.id = id
         self.is_armed = False
 
-    def arm(self):
+    def arm(self, force: bool):
         if not self.is_armed:
             self.is_armed = True
             return True
         return False
 
-    def disarm(self):
+    def disarm(self, force: bool):
         if self.is_armed:
             self.is_armed = False
             return True
@@ -43,10 +43,10 @@ class BulkControl:
         pass
 
     def __getattr__(self, attr):
-        def dynamic_method(*args):
+        def dynamic_method(*args, **kwargs):
             result = []
             for drone in self.drones:
-                result.append(getattr(drone, attr)(*args))
+                result.append(getattr(drone, attr)(*args, **kwargs))
             return result
         return dynamic_method
 
