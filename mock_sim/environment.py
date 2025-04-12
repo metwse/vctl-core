@@ -8,5 +8,6 @@ def initialize_environment(drone_count: int) -> DroneCtl:
     return DroneCtl(drone_count)
 
 
-def kill_environment():
-    pass
+def kill_environment(drone_ctl: DroneCtl):
+    time.sleep(1)
+    return True

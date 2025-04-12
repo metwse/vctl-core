@@ -44,6 +44,12 @@ class Drone:
         self.pos = [x, y, z]
         return self.is_armed
 
+    def get_telemetry(self):
+        return {
+            'pos': self.pos,
+            'v': 0,
+        }
+
 
 class BulkControl:
     """A class to manage bulk control actions for a set of drones.
