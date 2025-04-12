@@ -27,7 +27,7 @@ class Drone:
     def track(self):
         return self.is_armed
 
-    def move(self, x: float, y: float, z: float, v: float):
+    def move(self, x: float, y: float, z: float, v: float, origin: tuple = None):
         return self.is_armed
 
 
@@ -42,13 +42,31 @@ class BulkControl:
         self.drones = drones
         pass
 
+    def calculate_origin(self):
+        """
+        Calculate the origin for the drones.
+        This method should be implemented to set the origin for the drones.
+        """
+        # Placeholder for origin calculation logic
+        for drone in self.drones:
+            self.origin_x += drone.x
+            self.origin_y += drone.y
+            self.origin_z += drone.z
+
+        self.origin_x /= len(self.drones)
+        self.origin_y /= len(self.drones)
+        self.origin_z /= len(self.drones)
+        
+        self.origin = (self.origin_x, self.origin_y, self.origin_z)
+
     def __getattr__(self, attr):
         def dynamic_method(*args, **kwargs):
-            result = []
-            for drone in self.drones:
-                result.append(getattr(drone, attr)(*args, **kwargs))
-            return result
+            # Eğer fonksiyon origin kabul ediyorsa ekle
+            if 'origin' in getattr(self.drones[0], attr).__code__.co_varnames:
+                kwargs['origin'] = self.origin
+            return [getattr(drone, attr)(*args, **kwargs) for drone in self.drones]
         return dynamic_method
+        
 
 
 class DroneCtl:
