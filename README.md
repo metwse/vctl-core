@@ -1,4 +1,8 @@
-# Drone Control Utilities
+## Status
+Commits related to simulation launch, algorithms, and MAVLink connections have
+been filtered out due to the copyright claim.
+
+# vctl Utilities
 This repository contains low-level drone connection wrappers, mock drone APIs,
 and guidelines for setting up simulation environments.
 

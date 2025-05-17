@@ -3,10 +3,10 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "drone-utils"
+name = "vctl-core"
 version = "0.1.0"
-description = "Drone control utilities for Gazebo simulation and mock environments."
-authors = [{ name = "ITU Cezeri Team", email = "itu.cezeri@gmail.com" }]
+description = "Core utilities for remote vehicle/simulation controls."
+authors = [{ name = "Metehan Selvi", email = "me@metw.cc" }]
 readme = "README.md"
 license = { file = "LICENSE" }
 
